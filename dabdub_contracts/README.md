@@ -1,22 +1,49 @@
-# Soroban Project
+# Dabdub Stellar Contract
+
+A stablecoin payment system on Stellar blockchain that allows users to fund accounts with USDC and pay bills in local currencies.
 
 ## Project Structure
-
-This repository uses the recommended structure for a Soroban project:
-
-```text
-.
-├── contracts
-│   └── hello_world
-│       ├── src
-│       │   ├── lib.rs
-│       │   └── test.rs
-│       └── Cargo.toml
-├── Cargo.toml
+```
+cheese-vault-stellar/
+├── Cargo.toml                    # Workspace manifest
+├── contracts/
+│   ├── vault/                    # Main vault contract
+│   │   ├── Cargo.toml
+│   │   └── src/
+│   │       ├── lib.rs
+│   │       └── token_helpers.rs  # USDC token integration helpers
+│   ├── user_wallet/              # Individual user wallet contract
+│   │   ├── Cargo.toml
+│   │   └── src/
+│   │       └── lib.rs
+│   └── wallet_factory/           # Factory for deploying user wallets
+│       ├── Cargo.toml
+│       └── src/
+│           └── lib.rs
 └── README.md
 ```
 
-- New Soroban contracts can be put in `contracts`, each in their own directory. There is already a `hello_world` contract in there to get you started.
-- If you initialized this project with any other example contracts via `--with-example`, those contracts will be in the `contracts` directory as well.
-- Contracts should have their own `Cargo.toml` files that rely on the top-level `Cargo.toml` workspace for their dependencies.
-- Frontend libraries can be added to the top-level directory as well. If you initialized this project with a frontend template via `--frontend-template` you will have those files already included.
+## Setup
+
+### Prerequisites
+
+- [Rust](https://www.rust-lang.org/tools/install)
+- [Stellar CLI](https://developers.stellar.org/docs/tools/developer-tools)
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/songifi/dabdub.git
+cd dabdub_contracts
+
+# Build all contracts
+cargo build
+
+```
+
+## Testing
+
+### Run All Tests
+```bash
+cargo test
+```
